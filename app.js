@@ -10,7 +10,6 @@ const Bodyparser = require('koa-bodyparser');
 const views = require('koa-views');
 const favicon = require('koa-favicon');
 const session = require('koa-session');
-const config = require('getconfig');
 const onerror = require('koa-onerror');
 const logger = require('koa-logger');
 

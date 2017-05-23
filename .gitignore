@@ -1,6 +1,6 @@
-log
-npm-debug.log*
-node_modules
-bower_components
-.npm
+
 .idea
+node_modules
+*.log
+
+

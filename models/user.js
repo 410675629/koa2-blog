@@ -2,7 +2,7 @@
  * Created by mosaic101 on 2016/7/14.
  */
 const Promise = require('bluebird');
-const {user} = require('../schema/index');
+const { user } = require('../schema/index');
 
 /**
  * 【添加用户】
@@ -13,7 +13,7 @@ exports.save = function (user) {
     return new Promise((resolve, reject) => {
         action.save((err, result) => {
             if (err) {
-                return reject({message:'添加用户失败', err:err, status:-99});
+                return reject({ message: '添加用户失败', err: err, status: -99 });
             }
             return resolve(result);
         });
@@ -26,12 +26,14 @@ exports.save = function (user) {
  * @param where {object} 查询条件
  */
 exports.findOne = (where) => {
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
         user.findOne(where).exec((err, result) => {
-            if (err)
-                return reject({message:'查询出错！', err:err, status:-99});
-            if (!result)
-                return reject({message:'没有此用户！', err:err, status:-99});
+            if (err) {
+                return reject({ message: '查询出错！', err: err, status: -99 });
+            }
+            if (!result) {
+                return reject({ message: '没有此用户！', err: err, status: -99 });
+            }
             return resolve(result);
         });
     });
@@ -45,8 +47,8 @@ exports.findOne = (where) => {
  * @param callback {function}
  */
 exports.update = (where, options, callback) => {
-    user.update(where, options,{multi: true},(err, numberAffected, raw) => {
-        if(err) {
+    user.update(where, options, { multi: true }, (err, numberAffected, raw) => {
+        if (err) {
             return callback(err);
         }
         callback(null, numberAffected);
