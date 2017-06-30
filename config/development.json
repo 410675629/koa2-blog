@@ -1,10 +1,4 @@
 {
-  "host":"localhost",
-  "redis": {
-    "host": "127.0.0.1",
-    "port": 6379,
-    "db": 13,
-    "key": ".koa2-blog",
-    "secret": "koa2-blog"
-  }
+	"port": 4000,
+  "mongodb":"mongodb://localhost:27017/mblog"
 }
