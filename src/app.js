@@ -6,7 +6,7 @@
 /*   By: jianjin.wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/30 23:12:45 by jianjin.wu        #+#    #+#             */
-/*   Updated: 2017/07/01 02:35:17 by jianjin.wu       ###   ########.fr       */
+/*   Updated: 2017/07/05 22:56:50 by jianjin.wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,36 +43,6 @@ app.use((req, res, next) => {
 	res.status(err.status)
 	next()
 })
-
-// error handler
-// no stacktraces leaked to user unless in development environment
-/* eslint-disable no-unused-vars */
-// app.use((err, req, res, next) => {
-//   /* eslint-enable no-unused-vars */
-// 	if (err.status != 404) {
-// 		Logger.error({
-// 			method: req.method,
-// 			url: req.originalUrl,
-// 			message: err.message,
-// 			stack: err.stack
-// 		})
-// 	}
-// 	res.status(err.status || 500)
-//   //only be used in development
-// 	if (app.get('env') === 'development') {
-// 		res.json({
-// 			tag: 'error',
-// 			message: err.message,
-// 			stack: err.stack
-// 		})
-// 	} else {
-// 		res.json({
-// 			tag: 'error',
-// 			message: err.message
-// 		})
-// 	}
-// })
-
 
 module.exports = app
 
