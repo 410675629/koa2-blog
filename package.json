@@ -1,7 +1,7 @@
 {
   "name": "m-blog",
   "version": "2.0.0",
-  "private": false,
+  "private": true,
   "description": "Just a blog with nodejs",
   "scripts": {
     "start": "nodemon src/bin/www",
