@@ -3,7 +3,8 @@
 module.exports = {
 	env: {
     es6: true,
-		node: true
+		node: true,
+		mocha: true
   },
   parserOptions: {
 		sourceType: 'module',
@@ -11,10 +12,6 @@ module.exports = {
   },
   extends: 'eslint:recommended',
   'rules': {
-		indent: [
-			'error',
-			'tab'
-		],
 		quotes: [
 			'error',
 			'single'

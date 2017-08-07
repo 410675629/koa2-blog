@@ -1,12 +1,21 @@
-/**
- * Created by mosaic101 on 2016/7/14.
- */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   topic.js                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jianjin.wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/07 23:53:34 by jianjin.wu        #+#    #+#             */
+/*   Updated: 2017/08/07 23:53:35 by jianjin.wu       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 var TopicSchema = new Schema({
 	//自定义序列号 依次递增
-	fid: { type: Number, required: true },
+	// fid: { type: Number, required: true },
 	//title
 	title: { type: String, required: true },
 	//别名

@@ -1,4 +1,4 @@
 {
 	"port": 4000,
-  "mongodb":"mongodb://localhost:27017/mblog"
+  "mongoDB":"mongodb://localhost:27017/m-blog"
 }
