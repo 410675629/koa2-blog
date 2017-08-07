@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   topics.js                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jianjin.wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
+/*   By: Lucky Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/01 02:20:17 by jianjin.wu        #+#    #+#             */
-/*   Updated: 2017/08/07 23:45:05 by jianjin.wu       ###   ########.fr       */
+/*   Created: 2017/07/01 02:20:17 by Lucky Wu        #+#    #+#             */
+/*   Updated: 2017/08/08 00:07:21 by Lucky Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ router.get('/', joiValidator({
 	try {
 		let offset = req.query.offset || 0
 		let limit = req.query.limit || 10
-		let topic = await topicService.findAll(offset, limit)
+		let topic = await topicService.findAllAndCount(offset, limit)
 		return res.success(topic)
 	}
 	catch (err) {
@@ -45,6 +45,31 @@ router.get('/:id', joiValidator({
 	try {
 		let id = req.params.id
 		let topic = await topicService.findById(id)
+		return res.success(topic)
+	}
+	catch (err) {
+		return res.error(err)
+	}
+})
+
+// return topic
+router.post('/', joiValidator({
+	// body: {
+	// 	title: Joi.string().required(),
+	// 	markdown: Joi.string().required(),
+	// 	html: Joi.string().required()
+	// }
+}), async (req, res) => {
+	try {
+		let args = {
+			title: 'test title',
+			slug: 'test slug',
+			markdown: '<h1>hello world</h1>',
+			html: '<h1>hello world</h1>',
+			createdBy: 'Lucky Wu',
+			updatedBy: 'Lucky Wu'
+		}
+		let topic = await topicService.save(args)
 		return res.success(topic)
 	}
 	catch (err) {

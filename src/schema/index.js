@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.js                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jianjin.wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
+/*   By: Lucky Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/01 02:22:36 by jianjin.wu        #+#    #+#             */
-/*   Updated: 2017/08/07 23:57:59 by jianjin.wu       ###   ########.fr       */
+/*   Created: 2017/07/01 02:22:36 by Lucky Wu        #+#    #+#             */
+/*   Updated: 2017/08/07 23:59:27 by Lucky Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ mongoose.connect(mongoDB, { server: { poolSize: 20 } }, err => {
 	}
 })
 
-exports.Topic = require('./topic')
-exports.User = require('./user')
+module.exports = {
+	Topic: require('./topic'),
+	User: require('./user')
+}

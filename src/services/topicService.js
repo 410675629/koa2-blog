@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   topicService.js                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jianjin.wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
+/*   By: Lucky Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/01 02:20:58 by jianjin.wu        #+#    #+#             */
-/*   Updated: 2017/08/07 23:45:01 by jianjin.wu       ###   ########.fr       */
+/*   Created: 2017/07/01 02:20:58 by Lucky Wu        #+#    #+#             */
+/*   Updated: 2017/08/08 00:05:10 by Lucky Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ class TopicService {
 	 * @param {Number} limit - default 10
 	 * @memberof TopicService
 	 */
-	async findAll(offset, limit) {
-		let topics = await TopicModel.findAll(offset, limit)
-		if (topics) throw new Error('no topic')
+	async findAllAndCount(offset, limit) {
+		let topics = await TopicModel.findAllAndCount(offset, limit)
+		if (!topics) throw new Error('no topic')
 			return topics
 	}
 	
@@ -39,8 +39,17 @@ class TopicService {
 	 */
 	async findById(id) {
 		let topic = await TopicModel.findById(id)
-		if (topic) throw new Error('no topic')
+		if (!topic) throw new Error('no topic')
 		return topic
+	}
+
+	/**
+	 * create new topic
+	 * @param {Object} options 
+	 * @memberof TopicService
+	 */
+	save(options) {
+		return TopicModel.save(options)
 	}
 }
 

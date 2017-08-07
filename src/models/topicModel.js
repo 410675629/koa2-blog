@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   topicModel.js                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jianjin.wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
+/*   By: Lucky Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/07 22:51:33 by jianjin.wu        #+#    #+#             */
-/*   Updated: 2017/08/07 23:48:41 by jianjin.wu       ###   ########.fr       */
+/*   Created: 2017/08/07 22:51:33 by Lucky Wu        #+#    #+#             */
+/*   Updated: 2017/08/07 23:48:41 by Lucky Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ class TopicModel {
 	 * @param {Number} limit - default 10
 	 * @memberof Topic
 	 */
-	findAll(offset, limit) {
+	findAllAndCount(offset, limit) {
+		// TODO: count
 		return Topic.find({})
 			.sort({createdAt: -1})
 			.skip(offset)
