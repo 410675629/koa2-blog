@@ -13,32 +13,30 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-var TopicSchema = new Schema({
-	//自定义序列号 依次递增
-	// fid: { type: Number, required: true },
-	//title
+const TopicSchema = new Schema({
+	// title
 	title: { type: String, required: true },
-	//别名
-	slug: { type: String, required: true },
-	//分类
+	// 分类
 	type: { type: String, default: 'default' },
-	//markdown
+	// markdown
 	markdown: { type: String, required: true },
-	//html
+	// html
 	html: { type: String, required: true },
-	//状态
+	// tag
+	tags: { type: Array, required: false },
+	// 状态
 	state: { type: String, default: 'published' },
-	//阅读量
+	// 阅读量
 	readCount: { type: Number, default: 0 },
-	//置顶 0:不置顶 1:置顶
-	top: { type: Number, default: 0 },
-	//images数组
+	// 置顶
+	top: { type: Boolean, default: false },
+	// images数组
 	images: { type: Array, required: false },
-	//meta
+	// meta
 	metaTitle: { type: String, required: false },
-	//meta
+	// meta
 	metaDesc: { type: String, required: false },
-	//创建时间
+	// 创建时间
 	createdAt: { type: Date, default: Date.now },
 	//创建人
 	createdBy: { type: String, required: true, ref: 'User' },
@@ -48,4 +46,45 @@ var TopicSchema = new Schema({
 	updatedBy: { type: String, required: true, ref: 'User' }
 })
 
+
+/**
+ * TopicSchema methods
+ */
+TopicSchema.methods = {
+
+	/**
+	 * save topic
+	 * @param {Object} options 
+	 * @memberof Topic
+	 */
+	// save(options) {
+	// 	let topic = new this(options)
+	// 	topic.save()
+	// },
+
+	/**
+	 * find topics
+	 * @param {Number} offset - default 0
+	 * @param {Number} limit - default 10
+	 * @memberof Topic
+	 */
+	findAllAndCount(offset, limit) {
+		// TODO: count
+		return this.find({})
+			.sort({ createdAt: -1 })
+			.skip(offset)
+			.limit(limit)
+			.lean()
+			.exec()
+	},
+
+	/**
+	 * find topic
+	 * @param {String} id - ObjectId 
+	 * @memberof Topic
+	 */
+	findById(id) {
+		return this.findById(id).exec()
+	}
+}
 module.exports = mongoose.model('Topic', TopicSchema)

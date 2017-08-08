@@ -1,86 +1,40 @@
 # m-blog
 
-rebuild my blog project
+This is a blog project (with vue2.0、 express、 mongoDB、restful api)
 
-## Features
+reference to [w3cplus](http://www.w3cplus.com)
 
-1. topics
-2. home page
-3. message board
-4. open project
-5. search 
-6. chatroom
+author: [Lucky Wu](http://www.wujianjin.com)
 
+## Requirements
+
+### Topic
+存放平时写的博客文章，须以`tag`分类， 后期可能会许多分类。以发布时间倒叙，每页显示数量默认10篇。
+
+### Message Board 
+// need to think about it seriously
  
 
-## Models
+## Resources
 
-### Topics 
-
-```json
-//自定义序列号 依次递增
-fid: { type: Number, required: true },
-//title
-title: { type: String, required: true },
-//别名
-slug: { type: String, required: true },
-//分类
-type: { type: String, default: 'default' },
-//markdown
-markdown: { type: String, required: true },
-//html
-html: { type: String, required: true },
-//状态
-state: { type: String, default: 'published' },
-//阅读量
-readCount: { type: Number, default: 0 },
-//置顶 0:不置顶 1:置顶
-top: { type: Number, default: 0 },
-//images数组
-images: { type: Array, required: false },
-//meta
-metaTitle: { type: String, required: false },
-//meta
-metaDesc: { type: String, required: false },
-//创建时间
-createdAt: { type: Date, default: Date.now },
-//创建人
-createdBy: { type: String, required: true, ref: 'User' },
-//修改时间
-updatedAt: { type: Number, default: Date.now },
-//修改人
-updatedBy: { type: String, required: true, ref: 'User' }
-```
+### Topics
 
 ### Users
 
 
-## APIs
+## Format Response Content
 
-### Topics
+http code: [400, 401, 500, 200]
 
-create new topic
-```http
-POST /topics
-```
-request 
-```json
-body {
-	
-}
-```
-return success or error
-
-get one topic
-```http
-GET /topics/:id
-```
-response 
+### http code 200
 ```json
 {
-	
+    "code": 200,
+    "message": "ok",
+    "data": nul
 }
 ```
 
+### 
 
 

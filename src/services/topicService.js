@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-const { TopicModel } = require('../models')
+const { Topic } = require('../models')
 
 
 
@@ -27,7 +27,12 @@ class TopicService {
 	 * @memberof TopicService
 	 */
 	async findAllAndCount(offset, limit) {
-		let topics = await TopicModel.findAllAndCount(offset, limit)
+		let topics = await Topic.find()
+			.sort({createdAt: -1})
+			.skip(offset)
+			.limit(limit)
+			.lean()
+			.exec()
 		if (!topics) throw new Error('no topic')
 			return topics
 	}
@@ -38,7 +43,7 @@ class TopicService {
 	 * @memberof TopicService
 	 */
 	async findById(id) {
-		let topic = await TopicModel.findById(id)
+		let topic = await Topic.findById(id).exec()
 		if (!topic) throw new Error('no topic')
 		return topic
 	}
@@ -49,7 +54,9 @@ class TopicService {
 	 * @memberof TopicService
 	 */
 	save(options) {
-		return TopicModel.save(options)
+		let topic = new Topic(options)
+		topic.save()
+		return topic
 	}
 }
 
