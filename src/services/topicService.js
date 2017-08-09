@@ -27,7 +27,7 @@ class TopicService {
 	 * @memberof TopicService
 	 */
 	async findAllAndCount(offset, limit) {
-		let topics = await Topic.find()
+		let topics = await Topic.find({state: 'published'})
 			.sort({createdAt: -1})
 			.skip(offset)
 			.limit(limit)

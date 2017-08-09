@@ -17,13 +17,13 @@ const TopicSchema = new Schema({
 	// title
 	title: { type: String, required: true },
 	// 分类
-	type: { type: String, default: 'default' },
+	type: { type: String, required: true },
 	// markdown
 	markdown: { type: String, required: true },
 	// html
 	html: { type: String, required: true },
 	// tag
-	tags: { type: Array, required: false },
+	tags: { type: Array, required: true },
 	// 状态
 	state: { type: String, default: 'published' },
 	// 阅读量
@@ -31,17 +31,17 @@ const TopicSchema = new Schema({
 	// 置顶
 	top: { type: Boolean, default: false },
 	// images数组
-	images: { type: Array, required: false },
+	images: { type: Array },
 	// meta
-	metaTitle: { type: String, required: false },
+	metaTitle: { type: String },
 	// meta
-	metaDesc: { type: String, required: false },
+	metaDesc: { type: String },
 	// 创建时间
 	createdAt: { type: Date, default: Date.now },
 	//创建人
 	createdBy: { type: String, required: true, ref: 'User' },
 	//修改时间
-	updatedAt: { type: Number, default: Date.now },
+	updatedAt: { type: Date, default: Date.now },
 	//修改人
 	updatedBy: { type: String, required: true, ref: 'User' }
 })

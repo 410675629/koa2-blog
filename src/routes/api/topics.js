@@ -64,6 +64,7 @@ router.post('/', joiValidator({
 		let args = {
 			title: 'test title',
 			slug: 'test slug',
+			type: 'javaScript',
 			markdown: '<h1>hello world</h1>',
 			html: '<h1>hello world</h1>',
 			createdBy: 'Lucky Wu',
