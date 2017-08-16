@@ -12,6 +12,8 @@
 
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const moment = require('moment')
+const base = require('./base')
 
 const TopicSchema = new Schema({
 	// title
@@ -44,8 +46,19 @@ const TopicSchema = new Schema({
 	updatedAt: { type: Date, default: Date.now },
 	//修改人
 	updatedBy: { type: String, required: true, ref: 'User' }
-})
+}, {
+    // toObject: { virtuals: true },
+    toJSON: { virtuals: true }
+  })
 
+TopicSchema.plugin(base)
+
+TopicSchema.virtual('createdDate').get(function() {
+  return moment(this.createdAt).format('YYYY-MM-DD HH:mm:ss')
+})
+TopicSchema.virtual('updatedDate').get(function() {
+  return moment(this.updatedAt).format('YYYY-MM-DD HH:mm:ss')
+})
 
 /**
  * TopicSchema methods

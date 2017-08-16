@@ -68,7 +68,8 @@ router.post('/', joiValidator({
 			markdown: '<h1>hello world</h1>',
 			html: '<h1>hello world</h1>',
 			createdBy: 'Lucky Wu',
-			updatedBy: 'Lucky Wu'
+			updatedBy: 'Lucky Wu',
+			tags: ['test1','test2']
 		}
 		let topic = await topicService.save(args)
 		return res.success(topic)

@@ -12,6 +12,7 @@
 
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const moment = require('moment')
 
 const UserSchema = new Schema({
 	name: { type: String, required: true },
@@ -25,5 +26,11 @@ const UserSchema = new Schema({
 	updatedAt: { type: Number, default: Date.now }
 })
 
+UserSchema.virtual('createdDate').get(function() {
+  return moment(this.createdAt).format('YYYY-MM-DD HH:mm:ss')
+})
+UserSchema.virtual('updatedDate').get(function() {
+  return moment(this.updatedAt).format('YYYY-MM-DD HH:mm:ss')
+})
 
 module.exports = mongoose.model('User', UserSchema)

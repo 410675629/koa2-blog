@@ -12,8 +12,6 @@
 
 const { Topic } = require('../models')
 
-
-
 /**
  * This is topic service.
  * @class TopicService
@@ -31,7 +29,7 @@ class TopicService {
 			.sort({createdAt: -1})
 			.skip(offset)
 			.limit(limit)
-			.lean()
+			// .lean()
 			.exec()
 		if (!topics) throw new Error('no topic')
 			return topics
