@@ -47,11 +47,12 @@ const TopicSchema = new Schema({
 	//修改人
 	updatedBy: { type: String, required: true, ref: 'User' }
 }, {
-    // toObject: { virtuals: true },
+    toObject: { virtuals: true },
     toJSON: { virtuals: true }
   })
 
 TopicSchema.plugin(base)
+TopicSchema.index({createdAt: -1}) // 降序索引
 
 TopicSchema.virtual('createdDate').get(function() {
   return moment(this.createdAt).format('YYYY-MM-DD HH:mm:ss')

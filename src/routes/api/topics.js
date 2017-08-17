@@ -21,14 +21,14 @@ const topicService = require('../../services/topicService')
 // return topic list 
 router.get('/', joiValidator({
 	query: {
-		offset: Joi.number().min(0),
+		page: Joi.number().min(1),
 		limit: Joi.number().min(10)
 	}
 }), async (req, res) => {
 	try {
-		let offset = req.query.offset || 0
+		let page = req.query.page || 1
 		let limit = req.query.limit || 10
-		let topic = await topicService.findAllAndCount(offset, limit)
+		let topic = await topicService.findAllAndCount(page, limit)
 		return res.success(topic)
 	}
 	catch (err) {

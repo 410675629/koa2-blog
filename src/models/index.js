@@ -17,15 +17,16 @@ const { mongoDB } = require('getconfig')
 mongoose.Promise = global.Promise
 
 //connect mongodb's database
-mongoose.connect(mongoDB, { server: { poolSize: 20 } }, err => {
+mongoose.connect(mongoDB, {
+	config: { autoIndex: false }, // close ensureIndex
+	server: { poolSize: 20 } 
+}, err => {
 	if (err) {
-		//TODO: 添加logger日志
 		// logger.error('connect to %s error: ', DATABASE_URL, err.message);
 		process.exit(1)
 	}
 })
 
-// TODO: need to create index of models 
 module.exports = {
 	Topic: require('./topic'),
 	User: require('./user')

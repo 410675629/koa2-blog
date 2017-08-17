@@ -20,14 +20,14 @@ class TopicService {
 	
 	/**
 	 * get topics
-	 * @param {Number} offset - default 0
+	 * @param {Number} page - default 1
 	 * @param {Number} limit - default 10
 	 * @memberof TopicService
 	 */
-	async findAllAndCount(offset, limit) {
+	async findAllAndCount(page, limit) {
 		let topics = await Topic.find({state: 'published'})
 			.sort({createdAt: -1})
-			.skip(offset)
+			.skip((page - 1) * limit)
 			.limit(limit)
 			// .lean()
 			.exec()
