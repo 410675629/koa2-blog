@@ -56,6 +56,14 @@ class TopicService {
 		topic.save()
 		return topic
 	}
+
+	/**
+	 * topic count
+	 * @memberof TopicService
+	 */
+	count() {
+		return Topic.count({state: 'published'}).exec()
+	}
 }
 
 module.exports = new TopicService()

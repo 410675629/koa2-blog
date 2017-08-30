@@ -18,7 +18,7 @@ const joiValidator = require('../../middlewares/joiValidator')
 
 const topicService = require('../../services/topicService')
 
-// return topic list 
+// get topics
 router.get('/', joiValidator({
 	query: {
 		page: Joi.number().min(1),
@@ -28,15 +28,26 @@ router.get('/', joiValidator({
 	try {
 		let page = req.query.page || 1
 		let limit = req.query.limit || 10
-		let topic = await topicService.findAllAndCount(page, limit)
-		return res.success(topic)
+		let data = await topicService.findAllAndCount(page, limit)
+		return res.success(data)
 	}
 	catch (err) {
 		return res.error(err)
 	}
 })
 
-// return topic
+// get topic count
+router.get('/count',  async (req, res) => {
+	try {
+		let data = await topicService.count()
+		return res.success(data)
+	}
+	catch (err) {
+		return res.error(err)
+	}
+})
+
+// get topic
 router.get('/:id', joiValidator({
 	params: {
 		id: Joi.string().required()
@@ -44,15 +55,15 @@ router.get('/:id', joiValidator({
 }), async (req, res) => {
 	try {
 		let id = req.params.id
-		let topic = await topicService.findById(id)
-		return res.success(topic)
+		let data = await topicService.findById(id)
+		return res.success(data)
 	}
 	catch (err) {
 		return res.error(err)
 	}
 })
 
-// return topic
+// create new topic
 router.post('/', joiValidator({
 	// body: {
 	// 	title: Joi.string().required(),
@@ -71,8 +82,8 @@ router.post('/', joiValidator({
 			updatedBy: 'Lucky Wu',
 			tags: ['test1','test2']
 		}
-		let topic = await topicService.save(args)
-		return res.success(topic)
+		let data = await topicService.save(args)
+		return res.success(data)
 	}
 	catch (err) {
 		return res.error(err)

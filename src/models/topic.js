@@ -26,7 +26,7 @@ const TopicSchema = new Schema({
 	html: { type: String, required: true },
 	// tag
 	tags: { type: Array, required: true },
-	// 状态
+	// 状态 published unpublished deleted 
 	state: { type: String, default: 'published' },
 	// 阅读量
 	readCount: { type: Number, default: 0 },
