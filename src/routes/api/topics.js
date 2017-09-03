@@ -65,24 +65,19 @@ router.get('/:id', joiValidator({
 
 // create new topic
 router.post('/', joiValidator({
-	// body: {
-	// 	title: Joi.string().required(),
-	// 	markdown: Joi.string().required(),
-	// 	html: Joi.string().required()
-	// }
+	body: {
+		title: Joi.string().required(),
+		markdown: Joi.string().required(),
+		html: Joi.string().required(),
+		tags: Joi.array()
+	}
 }), async (req, res) => {
 	try {
-		let args = {
-			title: 'test title',
-			slug: 'test slug',
-			type: 'javaScript',
-			markdown: '<h1>hello world</h1>',
-			html: '<h1>hello world</h1>',
+		let topic = Object.assign({}, req.body, {
 			createdBy: 'Lucky Wu',
-			updatedBy: 'Lucky Wu',
-			tags: ['test1','test2']
-		}
-		let data = await topicService.save(args)
+			updatedBy: 'Lucky Wu'
+		})
+		let data = await topicService.save(topic)
 		return res.success(data)
 	}
 	catch (err) {

@@ -18,8 +18,6 @@ const base = require('./base')
 const TopicSchema = new Schema({
 	// title
 	title: { type: String, required: true },
-	// 分类
-	type: { type: String, required: true },
 	// markdown
 	markdown: { type: String, required: true },
 	// html
@@ -32,8 +30,6 @@ const TopicSchema = new Schema({
 	readCount: { type: Number, default: 0 },
 	// 置顶
 	top: { type: Boolean, default: false },
-	// images数组
-	images: { type: Array },
 	// meta
 	metaTitle: { type: String },
 	// meta
