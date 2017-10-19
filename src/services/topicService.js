@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   topicService.js                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lucky Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
+/*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/01 02:20:58 by Lucky Wu        #+#    #+#             */
-/*   Updated: 2017/08/08 00:05:10 by Lucky Wu       ###   ########.fr       */
+/*   Created: 2017/09/04 22:30:05 by JianJin Wu        #+#    #+#             */
+/*   Updated: 2017/09/04 22:30:07 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 const { Topic } = require('../models')
 

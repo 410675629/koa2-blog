@@ -4,7 +4,7 @@ This is a blog project (with vue2.0、 express、 mongoDB、restful api)
 
 reference to [w3cplus](http://www.w3cplus.com)
 
-author: [Lucky Wu](http://www.wujianjin.com)
+author: [JianJin Wu](http://www.wujianjin.com)
 
 ## Requirements
 

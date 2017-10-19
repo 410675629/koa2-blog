@@ -10,7 +10,7 @@
     "pm2": "pm2 start ./bin/www",
     "test": "mocha -u bdd"
   },
-  "author": "Lucky Wu <mosaic101@foxmail.com>",
+  "author": "JianJin Wu <mosaic101@foxmail.com>",
   "homepage": "http://www.wujianjin.com:4000",
   "keywords": [
     "nodejs",

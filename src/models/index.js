@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   index.js                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lucky Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
+/*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/01 02:22:36 by Lucky Wu        #+#    #+#             */
-/*   Updated: 2017/08/07 23:59:27 by Lucky Wu       ###   ########.fr       */
+/*   Created: 2017/09/04 22:28:57 by JianJin Wu        #+#    #+#             */
+/*   Updated: 2017/09/04 22:28:59 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 const mongoose = require('mongoose')
 const { mongoDB } = require('getconfig')

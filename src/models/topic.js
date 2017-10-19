@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   topic.js                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lucky Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
+/*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/07 23:53:34 by Lucky Wu        #+#    #+#             */
-/*   Updated: 2017/08/07 23:53:35 by Lucky Wu       ###   ########.fr       */
+/*   Created: 2017/09/04 22:28:49 by JianJin Wu        #+#    #+#             */
+/*   Updated: 2017/09/04 22:28:51 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema

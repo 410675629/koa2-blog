@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   logger.js                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lucky Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
+/*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/01 02:27:47 by Lucky Wu        #+#    #+#             */
-/*   Updated: 2017/07/01 02:27:48 by Lucky Wu       ###   ########.fr       */
+/*   Created: 2017/09/04 22:29:09 by JianJin Wu        #+#    #+#             */
+/*   Updated: 2017/09/04 22:29:11 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 const log4js = require('log4js')
 const path = require('path')

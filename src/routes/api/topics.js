@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   topics.js                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lucky Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
+/*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/01 02:20:17 by Lucky Wu        #+#    #+#             */
-/*   Updated: 2017/08/08 00:07:21 by Lucky Wu       ###   ########.fr       */
+/*   Created: 2017/09/04 22:26:42 by JianJin Wu        #+#    #+#             */
+/*   Updated: 2017/09/04 22:26:46 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ router.post('/', joiValidator({
 }), async (req, res) => {
 	try {
 		let topic = Object.assign({}, req.body, {
-			createdBy: 'Lucky Wu',
-			updatedBy: 'Lucky Wu'
+			createdBy: 'JianJin Wu',
+			updatedBy: 'JianJin Wu'
 		})
 		let data = await topicService.save(topic)
 		return res.success(data)

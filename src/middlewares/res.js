@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   res.js                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lucky Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
+/*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/30 23:20:34 by Lucky Wu        #+#    #+#             */
-/*   Updated: 2017/08/07 23:19:56 by Lucky Wu       ###   ########.fr       */
+/*   Created: 2017/09/04 22:29:04 by JianJin Wu        #+#    #+#             */
+/*   Updated: 2017/09/04 22:29:06 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 const { getconfig } = require('getconfig')
 
