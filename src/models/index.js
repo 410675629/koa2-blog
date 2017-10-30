@@ -6,7 +6,7 @@
 /*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/04 22:28:57 by JianJin Wu        #+#    #+#             */
-/*   Updated: 2017/09/04 22:28:59 by JianJin Wu       ###   ########.fr       */
+/*   Updated: 2017/10/31 00:38:47 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ mongoose.connect(mongoDB, {
 
 module.exports = {
 	Topic: require('./topic'),
-	User: require('./user')
+	User: require('./user'),
+	Catalog: require('./catalog'),
+	Comment: require('./comment')
 }

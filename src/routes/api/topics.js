@@ -6,7 +6,7 @@
 /*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/04 22:26:42 by JianJin Wu        #+#    #+#             */
-/*   Updated: 2017/09/04 22:26:46 by JianJin Wu       ###   ########.fr       */
+/*   Updated: 2017/10/31 00:32:21 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ const topicService = require('../../services/topicService')
 router.get('/', joiValidator({
 	query: {
 		page: Joi.number().min(1),
-		limit: Joi.number().min(10)
+		limit: Joi.number().min(10),
+		catalog: Joi.string() 			// optional
 	}
 }), async (req, res) => {
 	try {
@@ -47,6 +48,17 @@ router.get('/count',  async (req, res) => {
 	}
 })
 
+// get hot topics
+router.get('/hot', async (req, res) => {
+	try {
+		let data = await topicService.hotTopic()
+		return res.success(data)
+	}
+	catch (err) {
+		return res.error(err)
+	}
+})
+
 // get topic
 router.get('/:id', joiValidator({
 	params: {
@@ -63,19 +75,19 @@ router.get('/:id', joiValidator({
 	}
 })
 
-// create new topic
+// create topic
 router.post('/', joiValidator({
 	body: {
 		title: Joi.string().required(),
-		markdown: Joi.string().required(),
+		abstract: Joi.string().required(),
+		content: Joi.string().required(),
 		html: Joi.string().required(),
-		tags: Joi.array()
+		tags: Joi.array().required()
 	}
 }), async (req, res) => {
 	try {
 		let topic = Object.assign({}, req.body, {
-			createdBy: 'JianJin Wu',
-			updatedBy: 'JianJin Wu'
+			createdBy: 'JianJin Wu' // FIXME: userid
 		})
 		let data = await topicService.save(topic)
 		return res.success(data)

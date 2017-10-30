@@ -6,7 +6,7 @@
 /*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/04 22:30:05 by JianJin Wu        #+#    #+#             */
-/*   Updated: 2017/09/04 22:30:07 by JianJin Wu       ###   ########.fr       */
+/*   Updated: 2017/10/31 00:17:29 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,24 @@ class TopicService {
 	
 	/**
 	 * get topics
+	 * FIXME: 聚合 userInfo
 	 * @param {Number} page - default 1
 	 * @param {Number} limit - default 10
 	 * @memberof TopicService
 	 */
 	async findAllAndCount(page, limit) {
-		let topics = await Topic.find({state: 'published'})
+		let topics = await Topic.find({status: 'published'})
 			.sort({createdAt: -1})
 			.skip((page - 1) * limit)
 			.limit(limit)
 			// .lean()
 			.exec()
 		if (!topics) throw new Error('no topic')
-			return topics
+		return topics
 	}
 	
 	/**
+	 * // FIXME: readCount ++ 
 	 * get topic
 	 * @param {String} id - ObjectId
 	 * @memberof TopicService
@@ -63,7 +65,19 @@ class TopicService {
 	 * @memberof TopicService
 	 */
 	count() {
-		return Topic.count({state: 'published'}).exec()
+		return Topic.count({status: 'published'}).exec()
+	}
+	
+	/**
+	 * get hot topics
+	 * @returns 
+	 * @memberof TopicService
+	 */
+	hotTopic() {
+		return Topic.find({status: 'published'}, {title: 1, readCount: 1})
+		.sort({readCount: 1})
+		.limit(6)
+		.exec()
 	}
 }
 

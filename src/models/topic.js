@@ -6,43 +6,34 @@
 /*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/04 22:28:49 by JianJin Wu        #+#    #+#             */
-/*   Updated: 2017/09/04 22:28:51 by JianJin Wu       ###   ########.fr       */
+/*   Updated: 2017/10/30 00:17:14 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+const moment = require('moment')
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const moment = require('moment')
 const base = require('./base')
+const ObjectId  = Schema.ObjectId
+
 
 const TopicSchema = new Schema({
-	// title
 	title: { type: String, required: true },
-	// markdown
-	markdown: { type: String, required: true },
-	// html
+	abstract: { type: String, required: true },
+	content: { type: String, required: true },
 	html: { type: String, required: true },
-	// tag
 	tags: { type: Array, required: true },
-	// 状态 published unpublished deleted 
-	state: { type: String, default: 'published' },
-	// 阅读量
-	readCount: { type: Number, default: 0 },
-	// 置顶
+	// published, unpublished
+	status: { type: String, default: 'published' },
 	top: { type: Boolean, default: false },
-	// meta
-	metaTitle: { type: String },
-	// meta
-	metaDesc: { type: String },
-	// 创建时间
+	readCount: { type: Number, default: 0 },
+	replyCount: { type: Number, default: 0 },
+	likeCount: { type: Number, default: 0 },
+	catalogId: { type: ObjectId },
+	userId: { type: ObjectId },
+	deleted: { type: Boolean, default: false },
 	createdAt: { type: Date, default: Date.now },
-	//创建人
-	createdBy: { type: String, required: true, ref: 'User' },
-	//修改时间
-	updatedAt: { type: Date, default: Date.now },
-	//修改人
-	updatedBy: { type: String, required: true, ref: 'User' }
+	updatedAt: { type: Date, default: Date.now }
 }, {
     toObject: { virtuals: true },
     toJSON: { virtuals: true }
@@ -52,10 +43,10 @@ TopicSchema.plugin(base)
 TopicSchema.index({createdAt: -1}) // 降序索引
 
 TopicSchema.virtual('createdDate').get(function() {
-  return moment(this.createdAt).format('YYYY-MM-DD HH:mm:ss')
+  return moment(this.createdAt).format('YYYY-MM-DD')
 })
 TopicSchema.virtual('updatedDate').get(function() {
-  return moment(this.updatedAt).format('YYYY-MM-DD HH:mm:ss')
+  return moment(this.updatedAt).format('YYYY-MM-DD')
 })
 
 /**

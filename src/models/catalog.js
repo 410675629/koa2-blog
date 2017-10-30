@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   base.js                                            :+:      :+:    :+:   */
+/*   catalog.js                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/04 22:29:46 by JianJin Wu        #+#    #+#             */
-/*   Updated: 2017/10/29 23:34:38 by JianJin Wu       ###   ########.fr       */
+/*   Created: 2017/10/29 23:26:35 by JianJin Wu        #+#    #+#             */
+/*   Updated: 2017/10/29 23:59:32 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-const moment = require('moment')
 
-// FIXME:
-module.exports = function (schema) {
-  schema.methods.createdAt = function () {
-    return moment(this.createdAt).format('YYYY-MM-DD HH:mm')
-  }
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-  schema.methods.updatedAt = function () {
-    return moment(this.updatedAt).format('YYYY-MM-DD HH:mm')
-  }
-}
+
+const CatalogSchema = new Schema({
+	name: { type: String, required: true },
+	deleted: { type: Boolean, default: false },
+	createdAt: { type: Date, default: Date.now },
+	updatedAt: { type: Date, default: Date.now }
+})
+
+
+module.exports = mongoose.model('Catalog', CatalogSchema)
