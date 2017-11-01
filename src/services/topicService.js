@@ -6,7 +6,7 @@
 /*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/04 22:30:05 by JianJin Wu        #+#    #+#             */
-/*   Updated: 2017/10/31 00:17:29 by JianJin Wu       ###   ########.fr       */
+/*   Updated: 2017/11/01 00:08:08 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ class TopicService {
 	
 	/**
 	 * get topics
-	 * FIXME: 聚合 userInfo
 	 * @param {Number} page - default 1
 	 * @param {Number} limit - default 10
 	 * @memberof TopicService
 	 */
 	async findAllAndCount(page, limit) {
 		let topics = await Topic.find({status: 'published'})
+			.populate('author', 'nickname')
+			.populate('catalog', 'name')
 			.sort({createdAt: -1})
 			.skip((page - 1) * limit)
 			.limit(limit)
@@ -38,13 +39,16 @@ class TopicService {
 	}
 	
 	/**
-	 * // FIXME: readCount ++ 
 	 * get topic
+	 * // FIXME: readCount ++ 
 	 * @param {String} id - ObjectId
 	 * @memberof TopicService
 	 */
 	async findById(id) {
-		let topic = await Topic.findById(id).exec()
+		let topic = await Topic.findById(id)
+		.populate('author', 'nickname')
+		.populate('catalog', 'name')
+		.exec()
 		if (!topic) throw new Error('no topic')
 		return topic
 	}
@@ -54,10 +58,8 @@ class TopicService {
 	 * @param {Object} options 
 	 * @memberof TopicService
 	 */
-	save(options) {
-		let topic = new Topic(options)
-		topic.save()
-		return topic
+	create(options) {
+		return Topic.create(options)
 	}
 
 	/**

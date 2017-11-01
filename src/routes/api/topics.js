@@ -6,9 +6,10 @@
 /*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/04 22:26:42 by JianJin Wu        #+#    #+#             */
-/*   Updated: 2017/10/31 00:32:21 by JianJin Wu       ###   ########.fr       */
+/*   Updated: 2017/11/01 00:09:44 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 const express = require('express')
 const router = express.Router()
@@ -18,12 +19,13 @@ const joiValidator = require('../../middlewares/joiValidator')
 
 const topicService = require('../../services/topicService')
 
-// get topics
+// get topics and return count
 router.get('/', joiValidator({
 	query: {
 		page: Joi.number().min(1),
 		limit: Joi.number().min(10),
-		catalog: Joi.string() 			// optional
+		catalog: Joi.string(), 			// optional
+		tag: Joi.string()   	 		  // optional
 	}
 }), async (req, res) => {
 	try {
@@ -82,14 +84,16 @@ router.post('/', joiValidator({
 		abstract: Joi.string().required(),
 		content: Joi.string().required(),
 		html: Joi.string().required(),
-		tags: Joi.array().required()
+		catalog: Joi.string().required(),  // catalog ObjectId
+		tags: Joi.array().required()			 // array
 	}
 }), async (req, res) => {
 	try {
 		let topic = Object.assign({}, req.body, {
-			createdBy: 'JianJin Wu' // FIXME: userid
+			author: 'JianJin Wu', // FIXME: userid
+			catalog: 'xxxxx'
 		})
-		let data = await topicService.save(topic)
+		let data = await topicService.create(topic)
 		return res.success(data)
 	}
 	catch (err) {

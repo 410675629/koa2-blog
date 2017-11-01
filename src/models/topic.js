@@ -6,7 +6,7 @@
 /*   By: JianJin Wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/04 22:28:49 by JianJin Wu        #+#    #+#             */
-/*   Updated: 2017/10/30 00:17:14 by JianJin Wu       ###   ########.fr       */
+/*   Updated: 2017/10/31 22:53:09 by JianJin Wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ const TopicSchema = new Schema({
 	readCount: { type: Number, default: 0 },
 	replyCount: { type: Number, default: 0 },
 	likeCount: { type: Number, default: 0 },
-	catalogId: { type: ObjectId },
-	userId: { type: ObjectId },
+	catalog: { type: ObjectId, ref: 'Catalog' },
+	author: { type: ObjectId, ref: 'User' },
 	deleted: { type: Boolean, default: false },
 	createdAt: { type: Date, default: Date.now },
 	updatedAt: { type: Date, default: Date.now }
